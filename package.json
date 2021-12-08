@@ -4,7 +4,6 @@
   "description": "![employee-tracker](./assets/gif/#)",
   "main": "index.js",
   "scripts": {
-    "dev": "nodemon src/index.js",
     "start": "node src/index.js"
   },
   "repository": {
@@ -21,8 +20,5 @@
   "dependencies": {
     "inquirer": "^8.2.0",
     "mysql2": "^2.3.3"
-  },
-  "devDependencies": {
-    "nodemon": "^2.0.15"
   }
 }
