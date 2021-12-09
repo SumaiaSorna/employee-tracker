@@ -1,61 +1,87 @@
 // Include packages needed for this application
 const inquirer = require("inquirer");
-const questions = require("./question");
+// const db = require("./utils/question");
 
-const displayDepartments = () => {
-  // execute mysql query
-  // log/table departments
+const generateDepartmentChoices = (departmentsFromDb) => {
+  return departmentsFromDB.map((department) => {
+    return {
+      name: department.name,
+      value: department.id,
+    };
+  });
 };
 
-const displayRoles = () => {
-  // execute mysql query
-  // log/table roles
+const {
+  displayDepartments,
+  displayEmployee,
+  displayRoles,
+  getDepartments,
+  getEmployees,
+  constructDepartmentChoices,
+  constructRolechoices,
+  constructEmployeeChoices,
+} = require("./utils/");
+
+const actionQuestions = require("./utils/question");
+
+const start = async () => {
+  const db = new Db({
+    host: process.envDB_HOST || "localhost",
+    user: process.envDB_USER || "root",
+    password: process.envDB_PASSWORD || "password",
+    database: process.envDB_NAME || "company_db",
+  });
+
+  await db.start();
+
+  let inProgress = true;
+
+  while (inProgress) {
+    const { chosenAction } = await inquirer.prompt(actionQuestions);
+
+    if (chosenAction === "viewRoles") {
+      const roles = await db.query("SELECT * FROM jobRole");
+      console.table(roles);
+    }
+
+    if (chosenAction === "addRoles") {
+      const generateDepartmentChoices = (departmentsFromDB) => {
+        return departmentsFromDB.map((department) => {
+          return {
+            name: department.name,
+            value: department.id,
+          };
+        });
+      };
+
+      const departments = await db.query("SELECT * FROM department");
+
+      const roleQuestions = [
+        {
+          type: "list",
+          message: "Please select a department:",
+          name: "departmentId",
+          choices: generateDepartmentChoices(departments),
+        },
+        {
+          type: "input",
+          message: "Please enter role title:",
+          name: "title",
+        },
+        {
+          type: "input",
+          message: "Please enter role salary:",
+          name: "salary",
+        },
+      ];
+
+      const { departmentId, title, salary } = await inquirer.prompt(
+        roleQuestions
+      );
+
+      await db.query(
+        `INSERT INTO jobRole (title, salary, departmentId) VALUES("${title}", ${salary}, ${departmentId})`
+      );
+    }
+  }
 };
-
-const displayEmployees = () => {
-  // execute mysql query
-  // log/table employees
-};
-
-const getDepartments = () => {
-  // execute mysql query
-  // return departments
-};
-
-const getRoles = () => {
-  // execute mysql query
-  // return roles
-};
-
-const getEmployees = () => {
-  // execute mysql query
-  // return employees
-};
-
-const constructDepartmentChoices = (departments) => {
-  // return an array of department choices
-};
-
-const constructRoleChoices = (roles) => {
-  // return an array of role choices
-};
-
-const constructEmployeeChoices = (roles) => {
-  // return an array of employee choices
-};
-
-// const db = mysql.createConnection(
-//   {
-//     host: 'localhost',
-//     // MySQL username,
-//     user: 'root',
-//     // MySQL password
-//     password: '',
-//     database: 'classlist_db',
-//   },
-//   console.log(`Connected to the classlist_db database.`)
-// );
-
-const start = () => {};
-
-start();
