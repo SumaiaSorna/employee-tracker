@@ -16,3 +16,10 @@ VALUES ('Digital Marketing Assistant', 45000, 1),
 
 -- insert into employee
 
+INSERT INTO employee (firstName, lastName, jobRoleId, employeeId) 
+VALUES ('Diana', 'Spencer', 1, NULL),
+('Emma', 'Watson', 1, 1),
+('Jennifer', 'Lawrence', 2, 2),
+('Megan', 'Fox', 2, NULL),
+('Angelina', 'Jolie', 3, 3),
+('Kristen', 'Stewart', 3, NULL)

@@ -8,8 +8,6 @@
 - [Getting Started](#getting-started)
   - [Installation](#installation)
   - [Launch the app](#launch-the-app)
-  - [Tests with Coverage](#tests-with-coverage)
-  - [Tests with Watch](#tests-with-watch)
 - [Link to Repository](#link-to-repository)
 - [Link to Walkthrougho Vedio](#link-to-walkthrough-vedio)
 - [Screenshots](#screenshots)
@@ -32,18 +30,6 @@ npm i
 
 ```
 npm run start
-```
-
-### Tests with Coverage
-
-```
-npm run test
-```
-
-### Tests with Watch
-
-```
-npm run test:watch
 ```
 
 ## Link to repository
