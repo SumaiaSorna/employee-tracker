@@ -1,5 +1,4 @@
 const mysql = require("mysql2");
-const cTable = require("console.table");
 
 const { departments, employees, roles } = require("./db/data");
 

@@ -1,15 +1,15 @@
 // Include packages needed for this application
 const inquirer = require("inquirer");
-// const db = require("./utils/question");
+const db = require("./utils/question");
 
-const generateDepartmentChoices = (departmentsFromDb) => {
-  return departmentsFromDB.map((department) => {
-    return {
-      name: department.name,
-      value: department.id,
-    };
-  });
-};
+// const generateDepartmentChoices = (departmentsFromDb) => {
+//   return departmentsFromDB.map((department) => {
+//     return {
+//       name: department.name,
+//       value: department.id,
+//     };
+//   });
+// };
 
 const {
   displayDepartments,
@@ -20,7 +20,7 @@ const {
   constructDepartmentChoices,
   constructRolechoices,
   constructEmployeeChoices,
-} = require("./utils/");
+} = require("./utils/question");
 
 const actionQuestions = require("./utils/question");
 
@@ -39,9 +39,19 @@ const start = async () => {
   while (inProgress) {
     const { chosenAction } = await inquirer.prompt(actionQuestions);
 
-    if (chosenAction === "viewRoles") {
-      const roles = await db.query("SELECT * FROM jobRole");
-      console.table(roles);
+    if (chosenAction === "viewEmployee") {
+      const employees = await db.query(
+        "SELECT employee.id, employee.firstName, employee.lastName FROM employee"
+      );
+      console.table(employees);
+    }
+
+    if (chosenAction === "addEmployee") {
+      console.table(addEmployee);
+    }
+
+    if (chosenAction === "updateEmployeeRole") {
+      console.table(updateEmployeeRole);
     }
 
     if (chosenAction === "addRoles") {
@@ -83,5 +93,27 @@ const start = async () => {
         `INSERT INTO jobRole (title, salary, departmentId) VALUES("${title}", ${salary}, ${departmentId})`
       );
     }
+
+    if (chosenAction === "viewRoles") {
+      const roles = await db.query("SELECT * FROM jobRole");
+      console.table(roles);
+    }
+
+    if (chosenAction === "viewDepartments") {
+      displayDepartments();
+      console.log("viewDepartments");
+    }
+
+    if (chosenAction === "addDepartment") {
+      console.log("addDepartment");
+    }
+
+    if (chosenAction === "exit") {
+      inProgress = false;
+      db.stop();
+      process.exit(0);
+    }
   }
 };
+
+start();
