@@ -1,15 +1,7 @@
 // Include packages needed for this application
 const inquirer = require("inquirer");
 const Db = require("./utils/db");
-
-// const generateDepartmentChoices = (departmentsFromDb) => {
-//   return departmentsFromDB.map((department) => {
-//     return {
-//       name: department.name,
-//       value: department.id,
-//     };
-//   });
-// };
+const cTable = require("console.table");
 
 const {
   displayDepartments,
@@ -95,17 +87,22 @@ const start = async () => {
     }
 
     if (chosenAction === "viewRoles") {
-      const roles = await db.query("SELECT * FROM jobRole");
+      const roles = await db.query(
+        "SELECT jobRole.id, jobRole.title, jobRole.salary, department.name FROM jobRole JOIN department ON jobRole.departmentId = department.id ORDER BY department.name;"
+      );
       console.table(roles);
     }
 
     if (chosenAction === "viewDepartments") {
-      displayDepartments();
-      console.log("viewDepartments");
+      const department = await db.query("SELECT * FROM department");
+      //displayDepartments();
+      console.table(department);
     }
 
     if (chosenAction === "addDepartment") {
-      console.log("addDepartment");
+      // ask the user the name user want to add
+      //add the response in the table
+      console.table("addDepartment");
     }
 
     if (chosenAction === "exit") {
