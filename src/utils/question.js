@@ -134,4 +134,4 @@ const actionQuestions = {
 //   }
 // }
 
-module.exports = questions;
+module.exports = actionQuestions;
