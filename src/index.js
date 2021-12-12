@@ -4,6 +4,26 @@ const inquirer = require("inquirer");
 const actionQuestions = require("./utils/question");
 const Db = require("./utils/Db");
 
+// dynamically generating roles
+const generateRoleChoices = (rolesFromDB) => {
+  return rolesFromDB.map((jobRole) => {
+    return {
+      name: jobRole.title,
+      value: jobRole.id,
+    };
+  });
+};
+
+// dynamically generating managers
+const generateManagerChoices = (managerFromDB) => {
+  return managerFromDB.map((employee) => {
+    return {
+      name: employee.firstName + " " + employee.lastName,
+      value: employee.id,
+    };
+  });
+};
+
 const start = async () => {
   const db = new Db({
     host: process.envDB_HOST || "localhost",
@@ -30,7 +50,44 @@ const start = async () => {
     }
 
     if (chosenAction === "addEmployee") {
-      console.table(addEmployee);
+      // add an employee
+      if (chosenAction === "addEmployee") {
+        const role = await db.query("SELECT * FROM jobRole");
+        const employee = await db.query("SELECT * FROM employee");
+
+        const employeeQuestions = [
+          {
+            type: "input",
+            message: "Please enter employee's first name:",
+            name: "firstName",
+          },
+          {
+            type: "input",
+            message: "Please enter employee's last name:",
+            name: "lastName",
+          },
+          {
+            type: "list",
+            message: "Please select a role:",
+            name: "jobRoleId",
+            choices: generateRoleChoices(role),
+          },
+          {
+            type: "list",
+            message: "Please select a Manager:",
+            name: "managerId",
+            choices: generateManagerChoices(employee),
+          },
+        ];
+
+        const { jobRoleId, firstName, lastName, managerId } =
+          await inquirer.prompt(employeeQuestions);
+
+        await db.query(
+          `INSERT INTO employee (firstName, lastName, jobRoleId, managerId) VALUES("${firstName}", "${lastName}", ${jobRoleId}, ${managerId})`
+        );
+        console.log(`Added ${firstName} ${lastName} to the database.`);
+      }
     }
 
     if (chosenAction === "updateEmployeeRole") {
