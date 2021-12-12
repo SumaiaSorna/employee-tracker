@@ -1,20 +1,8 @@
 // Include packages needed for this application
 const inquirer = require("inquirer");
-const Db = require("./utils/db");
-const cTable = require("console.table");
-
-const {
-  displayDepartments,
-  displayEmployee,
-  displayRoles,
-  getDepartments,
-  getEmployees,
-  constructDepartmentChoices,
-  constructRolechoices,
-  constructEmployeeChoices,
-} = require("./utils/question");
 
 const actionQuestions = require("./utils/question");
+const Db = require("./utils/Db");
 
 const start = async () => {
   const db = new Db({
