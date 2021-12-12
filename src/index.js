@@ -177,8 +177,10 @@ const start = async () => {
 
     // view all departments
     if (chosenAction === "viewDepartments") {
-      const department = await db.query("SELECT * FROM department");
-      console.table(department);
+      const departments = await db.query(
+        "SELECT department.name AS 'DEPARTMENT' FROM department"
+      );
+      console.table(departments);
     }
 
     // add a department
