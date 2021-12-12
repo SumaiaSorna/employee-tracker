@@ -74,6 +74,46 @@ const start = async () => {
       );
       console.table(roles);
     }
+    // add a role
+    if (chosenAction === "addRoles") {
+      const generateDepartmentChoices = (departmentsFromDB) => {
+        return departmentsFromDB.map((department) => {
+          return {
+            name: department.name,
+            value: department.id,
+          };
+        });
+      };
+
+      const departments = await db.query("SELECT * FROM department");
+
+      const roleQuestions = [
+        {
+          type: "list",
+          message: "Please select a department:",
+          name: "departmentId",
+          choices: generateDepartmentChoices(departments),
+        },
+        {
+          type: "input",
+          message: "Please enter role title:",
+          name: "title",
+        },
+        {
+          type: "input",
+          message: "Please enter role salary:",
+          name: "salary",
+        },
+      ];
+
+      const { departmentId, title, salary } = await inquirer.prompt(
+        roleQuestions
+      );
+
+      await db.query(
+        `INSERT INTO jobRole (title, salary, departmentId) VALUES("${title}", ${salary}, ${departmentId})`
+      );
+    }
 
     // add an employee
     if (chosenAction === "addEmployee") {
@@ -159,47 +199,6 @@ const start = async () => {
         `INSERT INTO department (name) VALUES("${newDepartment}")`
       );
       console.log(`Added ${newDepartment} to the database`);
-    }
-
-    // add a role
-    if (chosenAction === "addRoles") {
-      const generateDepartmentChoices = (departmentsFromDB) => {
-        return departmentsFromDB.map((department) => {
-          return {
-            name: department.name,
-            value: department.id,
-          };
-        });
-      };
-
-      const departments = await db.query("SELECT * FROM department");
-
-      const roleQuestions = [
-        {
-          type: "list",
-          message: "Please select a department:",
-          name: "departmentId",
-          choices: generateDepartmentChoices(departments),
-        },
-        {
-          type: "input",
-          message: "Please enter role title:",
-          name: "title",
-        },
-        {
-          type: "input",
-          message: "Please enter role salary:",
-          name: "salary",
-        },
-      ];
-
-      const { departmentId, title, salary } = await inquirer.prompt(
-        roleQuestions
-      );
-
-      await db.query(
-        `INSERT INTO jobRole (title, salary, departmentId) VALUES("${title}", ${salary}, ${departmentId})`
-      );
     }
 
     // exit questions

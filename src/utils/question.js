@@ -16,6 +16,10 @@ const actionQuestions = {
       name: "View all Roles",
     },
     {
+      value: "addRoles",
+      name: "Add a new Role",
+    },
+    {
       value: "addEmployee",
       name: "Add a new Employee",
     },
@@ -26,10 +30,6 @@ const actionQuestions = {
     {
       value: "addDepartment",
       name: "Add a new Department",
-    },
-    {
-      value: "addRoles",
-      name: "Add a new Role",
     },
     {
       value: "exit",
