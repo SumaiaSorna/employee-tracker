@@ -1,3 +1,6 @@
+USE company_db
+
+
 -- insert into department
 INSERT INTO department (name) 
 VALUES ('Marketing'),
@@ -16,7 +19,7 @@ VALUES ('Digital Marketing Assistant', 45000, 1),
 
 -- insert into employee
 
-INSERT INTO employee (firstName, lastName, jobRoleId, employeeId) 
+INSERT INTO employee (firstName, lastName, jobRoleId, managerId) 
 VALUES ('Diana', 'Spencer', 1, NULL),
 ('Emma', 'Watson', 1, 1),
 ('Jennifer', 'Lawrence', 2, 2),

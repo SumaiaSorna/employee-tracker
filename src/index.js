@@ -19,9 +19,12 @@ const start = async () => {
   while (inProgress) {
     const { chosenAction } = await inquirer.prompt(actionQuestions);
 
+    // view all employees
     if (chosenAction === "viewEmployee") {
       const employees = await db.query(
-        "SELECT employee.id, employee.firstName, employee.lastName FROM employee"
+        `SELECT CONCAT(e.firstName,' ', e.lastName) AS 'EMPLOYEE', j.title AS 'JOB ROLE', d.name AS 'DEPARTMENT', j.salary AS 'SALARY',
+      CONCAT( m.firstName,' ',  m.lastName) AS MANAGER
+      FROM employee AS e JOIN employee AS m ON e.managerId = m.id INNER JOIN jobRole j ON e.jobRoleId = j.id LEFT JOIN department d ON j.departmentId = d.id;`
       );
       console.table(employees);
     }
