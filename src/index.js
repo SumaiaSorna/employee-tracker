@@ -185,13 +185,23 @@ const start = async () => {
 
     // add a department
     if (chosenAction === "addDepartment") {
-      // ask the user the name user want to add
-      //add the response in the table
-      console.table("addDepartment");
+      const departmentQuestions = [
+        {
+          type: "input",
+          message: "Please enter new department:",
+          name: "newDepartment",
+        },
+      ];
+
+      const { newDepartment } = await inquirer.prompt(departmentQuestions);
+
+      await db.query(
+        `INSERT INTO department (name) VALUES("${newDepartment}")`
+      );
+      console.log(`Added ${newDepartment} to the database`);
     }
 
     // exit questions
-
     if (chosenAction === "exit") {
       inProgress = false;
       db.stop();
