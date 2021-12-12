@@ -2,17 +2,21 @@
 
 ![MIT](https://img.shields.io/static/v1?label=MIT&message=License&color=Green)
 
-![employee-tracker](./assets/gif/#)
+## Link to repository
+
+Click [here](https://github.com/SumaiaSorna/employee-tracker/tree/dev) to view deployed application on Github page.
+
+## Link to Walkthrough Vedio
+
+<a href="https://drive.google.com/drive/u/0/folders/1d_k7_OuoK3SC4kmhqX_h983h-bFf-NsD">Walkthrough Video</a>
 
 ## Table Of Contents
 
 - [Description](#description)
 - [User Story](#user-story)
 - [Getting Started](#getting-started)
-
   - [Installation](#installation)
   - [Launch the app](#launch-the-app)
-
 - [Link to Repository](#link-to-repository)
 - [Link to Walkthrougho Vedio](#link-to-walkthrough-vedio)
 - [Questions](#questions)
@@ -46,14 +50,6 @@ npm i
 ```
 npm run start
 ```
-
-## Link to repository
-
-Click [here](#) to view deployed application on Github page.
-
-## Link to Walkthrough Vedio
-
-<a href="https://drive.google.com/drive/u/0/folders/1d_k7_OuoK3SC4kmhqX_h983h-bFf-NsD">Walkthrough Video</a>
 
 ## Questions
 
