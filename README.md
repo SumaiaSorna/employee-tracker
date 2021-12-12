@@ -17,8 +17,6 @@ Click [here](https://github.com/SumaiaSorna/employee-tracker/tree/dev) to view d
 - [Getting Started](#getting-started)
   - [Installation](#installation)
   - [Launch the app](#launch-the-app)
-- [Link to Repository](#link-to-repository)
-- [Link to Walkthrougho Vedio](#link-to-walkthrough-vedio)
 - [Questions](#questions)
 
 ## Description
