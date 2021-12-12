@@ -1,19 +1,31 @@
-# employee-tracker![MIT](https://img.shields.io/static/v1?label=MIT&message=License&color=critical)
+# Employee-tracker
+
+![MIT](https://img.shields.io/static/v1?label=MIT&message=License&color=Green)
 
 ![employee-tracker](./assets/gif/#)
 
 ## Table Of Contents
 
 - [Description](#description)
+- [User Story](#user-story)
 - [Getting Started](#getting-started)
+
   - [Installation](#installation)
   - [Launch the app](#launch-the-app)
+
 - [Link to Repository](#link-to-repository)
 - [Link to Walkthrougho Vedio](#link-to-walkthrough-vedio)
-- [Screenshots](#screenshots)
 - [Questions](#questions)
 
 ## Description
+
+Employee Tracker is a command line application, using inquirer with basic commands to add and manage Employees, Roles and Departments.
+
+### User Story
+
+As a business owner
+I Want to be able to view and manage the departments, roles, and employees in my company
+So that i can organize and plan my business
 
 ## Getting Started
 
@@ -23,6 +35,9 @@
 git clone git@github.com:SumaiaSorna/employee-tracker.git
 cd employee-tracker
 code .
+
+Copy and run schema.sql and seed.sql
+
 npm i
 ```
 
@@ -39,10 +54,6 @@ Click [here](#) to view deployed application on Github page.
 ## Link to Walkthrough Vedio
 
 <a href="#">Walkthrough Video</a>
-
-## Screenshots
-
-![screenshot of ...........](./assets/images/#)
 
 ## Questions
 

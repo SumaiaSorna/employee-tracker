@@ -8,6 +8,14 @@ const actionQuestions = {
       name: "View all Employees",
     },
     {
+      value: "viewDepartments",
+      name: "View all Departments",
+    },
+    {
+      value: "viewRoles",
+      name: "View all Roles",
+    },
+    {
       value: "addEmployee",
       name: "Add a new Employee",
     },
@@ -16,20 +24,12 @@ const actionQuestions = {
       name: "Update an Employee Role",
     },
     {
-      value: "viewRoles",
-      name: "View all Roles",
+      value: "addDepartment",
+      name: "Add a new Department",
     },
     {
       value: "addRoles",
       name: "Add a new Role",
-    },
-    {
-      value: "viewDepartments",
-      name: "View all Departments",
-    },
-    {
-      value: "addDepartment",
-      name: "Add a new Department",
     },
     {
       value: "exit",
