@@ -53,7 +53,7 @@ Click [here](#) to view deployed application on Github page.
 
 ## Link to Walkthrough Vedio
 
-<a href="#">Walkthrough Video</a>
+<a href="https://drive.google.com/drive/u/0/folders/1d_k7_OuoK3SC4kmhqX_h983h-bFf-NsD">Walkthrough Video</a>
 
 ## Questions
 
