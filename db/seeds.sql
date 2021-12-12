@@ -1,4 +1,4 @@
-USE company_db
+USE company_db;
 
 
 -- insert into department
@@ -14,7 +14,7 @@ VALUES ('Digital Marketing Assistant', 45000, 1),
 ('Financial Reporting Manager', 30000, 2),
 ('Finance Apprentice', 25000, 2) ,
 ('Senior Accounting Manager', 60000, 3),
-('Accounting Assistant', 15000, 3)
+('Accounting Assistant', 15000, 3);
 
 
 -- insert into employee
@@ -25,4 +25,4 @@ VALUES ('Diana', 'Spencer', 1, NULL),
 ('Jennifer', 'Lawrence', 2, 2),
 ('Megan', 'Fox', 2, NULL),
 ('Angelina', 'Jolie', 3, 3),
-('Kristen', 'Stewart', 3, NULL)
+('Kristen', 'Stewart', 3, NULL);
