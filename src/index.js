@@ -59,6 +59,22 @@ const start = async () => {
       console.table(employees);
     }
 
+    // view all departments
+    if (chosenAction === "viewDepartments") {
+      const departments = await db.query(
+        "SELECT department.name AS 'DEPARTMENT' FROM department"
+      );
+      console.table(departments);
+    }
+
+    // view all roles
+    if (chosenAction === "viewRoles") {
+      const roles = await db.query(
+        "SELECT jobRole.id, jobRole.title, jobRole.salary, department.name FROM jobRole JOIN department ON jobRole.departmentId = department.id ORDER BY department.name;"
+      );
+      console.table(roles);
+    }
+
     // add an employee
     if (chosenAction === "addEmployee") {
       const role = await db.query("SELECT * FROM jobRole");
@@ -127,6 +143,24 @@ const start = async () => {
       console.log(`Employee Role has been updated`);
     }
 
+    // add a department
+    if (chosenAction === "addDepartment") {
+      const departmentQuestions = [
+        {
+          type: "input",
+          message: "Please enter new department:",
+          name: "newDepartment",
+        },
+      ];
+
+      const { newDepartment } = await inquirer.prompt(departmentQuestions);
+
+      await db.query(
+        `INSERT INTO department (name) VALUES("${newDepartment}")`
+      );
+      console.log(`Added ${newDepartment} to the database`);
+    }
+
     // add a role
     if (chosenAction === "addRoles") {
       const generateDepartmentChoices = (departmentsFromDB) => {
@@ -166,39 +200,6 @@ const start = async () => {
       await db.query(
         `INSERT INTO jobRole (title, salary, departmentId) VALUES("${title}", ${salary}, ${departmentId})`
       );
-    }
-    // view all roles
-    if (chosenAction === "viewRoles") {
-      const roles = await db.query(
-        "SELECT jobRole.id, jobRole.title, jobRole.salary, department.name FROM jobRole JOIN department ON jobRole.departmentId = department.id ORDER BY department.name;"
-      );
-      console.table(roles);
-    }
-
-    // view all departments
-    if (chosenAction === "viewDepartments") {
-      const departments = await db.query(
-        "SELECT department.name AS 'DEPARTMENT' FROM department"
-      );
-      console.table(departments);
-    }
-
-    // add a department
-    if (chosenAction === "addDepartment") {
-      const departmentQuestions = [
-        {
-          type: "input",
-          message: "Please enter new department:",
-          name: "newDepartment",
-        },
-      ];
-
-      const { newDepartment } = await inquirer.prompt(departmentQuestions);
-
-      await db.query(
-        `INSERT INTO department (name) VALUES("${newDepartment}")`
-      );
-      console.log(`Added ${newDepartment} to the database`);
     }
 
     // exit questions
