@@ -4,7 +4,7 @@
 
 ## Link to repository
 
-Click [here](https://github.com/SumaiaSorna/employee-tracker/tree/dev) to view deployed application on Github page.
+Click [here](https://sumaiasorna.github.io/employee-tracker/) to view deployed application on Github page.
 
 ## Link to Walkthrough Vedio
 
