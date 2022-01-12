@@ -2,6 +2,8 @@
 
 ![MIT](https://img.shields.io/static/v1?label=MIT&message=License&color=Green)
 
+Employee Tracker is a command line application, using inquirer with basic commands to add and manage Employees, Roles and Departments.
+
 ## Link to repository
 
 Click [here](https://sumaiasorna.github.io/employee-tracker/) to view deployed application on Github page.
@@ -12,16 +14,11 @@ Click [here](https://sumaiasorna.github.io/employee-tracker/) to view deployed a
 
 ## Table Of Contents
 
-- [Description](#description)
 - [User Story](#user-story)
 - [Getting Started](#getting-started)
   - [Installation](#installation)
   - [Launch the app](#launch-the-app)
 - [Questions](#questions)
-
-## Description
-
-Employee Tracker is a command line application, using inquirer with basic commands to add and manage Employees, Roles and Departments.
 
 ### User Story
 
